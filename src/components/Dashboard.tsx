@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Clock, Brain, Zap, TrendingUp, Plus, MoreHorizontal, CheckCircle2 } from 'lucide-react';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css'; // Import styles
 import type { ScheduleInsight, Task } from '../types';
 
 const insights: ScheduleInsight[] = [
@@ -42,6 +44,12 @@ const upcomingTasks: Task[] = [
 ];
 
 const Dashboard = () => {
+  const [showCalendar, setShowCalendar] = useState(false); // To toggle calendar view
+
+  const toggleCalendarView = () => {
+    setShowCalendar(!showCalendar); // Toggle the calendar view when clicked
+  };
+
   return (
     <div className="flex-1 p-8 bg-gray-50">
       <div className="max-w-7xl mx-auto">
@@ -54,9 +62,12 @@ const Dashboard = () => {
                 <MoreHorizontal className="w-6 h-6" />
               </button>
             </div>
-            <button className="flex items-center space-x-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors">
+            <button
+              onClick={toggleCalendarView} // Toggle calendar on button click
+              className="flex items-center space-x-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+            >
               <Plus className="w-4 h-4" />
-              <span>New Task</span>
+              <span>View Calendar</span>
             </button>
           </div>
           <div className="flex space-x-4">
@@ -160,6 +171,13 @@ const Dashboard = () => {
             </button>
           </div>
         </div>
+
+        {/* Display the Calendar View */}
+        {showCalendar && (
+          <div className="mt-8">
+            <Calendar />
+          </div>
+        )}
       </div>
     </div>
   );
