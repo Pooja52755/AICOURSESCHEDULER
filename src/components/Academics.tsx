@@ -219,7 +219,7 @@ const Academics = () => {
                 <thead>
                   <tr>
                     <th>Period</th>
-                    {daysOfWeek.slice(0, 6).map((day) => (
+                    {daysOfWeek.slice(0, 5).map((day) => (
                       <th key={day}>{day.charAt(0).toUpperCase() + day.slice(1)}</th>
                     ))}
                   </tr>
@@ -228,7 +228,7 @@ const Academics = () => {
                   {periodTimes.map((time, periodIndex) => (
                     <tr key={periodIndex}>
                       <td>{time}</td>
-                      {daysOfWeek.slice(0, 6).map((day) => (
+                      {daysOfWeek.slice(0, 5).map((day) => (
                         <td key={day} style={getActivityStyle(day, periodIndex)}>
                           <div>
                             {schedule[day] && schedule[day][periodIndex] ? (

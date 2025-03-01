@@ -1,11 +1,11 @@
 export interface Task {
   id: string;
   title: string;
-  description?: string;
+  description: string;
   startTime: Date;
   endTime: Date;
   priority: 'high' | 'medium' | 'low';
-  category: 'academic' | 'extracurricular' | 'work' | 'personal';
+  category: 'study' | 'work' | 'personal' | 'other';
   completed: boolean;
 }
 
@@ -15,4 +15,4 @@ export interface ScheduleInsight {
   icon: string;
 }
 
-export type ActiveTab = 'schedule' | 'academics' | 'work' | 'activities' | 'analytics' | 'settings';
+export type ActivePage = 'schedule' | 'analytics' | 'academic' | 'settings';
